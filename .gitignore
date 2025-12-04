@@ -1,4 +1,12 @@
-backend/.env
+
 .env
 *.env
-**/.env
+
+__pycache__/
+*.py[cod]
+pycache/
+venv/
+
+node_modules/
+
+.DS_Store
