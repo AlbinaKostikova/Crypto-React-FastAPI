@@ -16,7 +16,7 @@ const formatMarketCap = (value) => {
   return `${scaled.toFixed(3)}${unit?.suffix ?? ''}`
 }
 
-const CryptocurrencyCard = ({ currency }) => {
+const CryptocurrencyCard = ({ currency, width = 340 }) => {
   if (!currency) return null
 
   const quoteUSD = currency?.quote?.USD ?? {}
@@ -50,7 +50,7 @@ const CryptocurrencyCard = ({ currency }) => {
           <span>{currency.name}</span>
         </div>
       }
-      style={{ width: 340 }}
+      style={{ width: width }}
     >
       <p>Текущая цена: {displayPrice}</p>
       <p>
@@ -59,7 +59,6 @@ const CryptocurrencyCard = ({ currency }) => {
       </p>
       <p>Капитализация: <span style={{ fontWeight: 600 }}>{displayMarketCap}</span></p>
       <p>Символ: {currency.symbol ?? '—'}</p>
-      <p>ID: {currency.id ?? '—'}</p>
     </Card>
   )
 }

@@ -1,7 +1,9 @@
+import CryptoAnalysisCard from './components/CryptoAnalysisCard.jsx'
 import CryptocurrencyCard from './components/CryptocurrencyCard.jsx'
 import React, { useEffect, useState } from 'react'
 import { Menu, Spin } from 'antd'
 import axios from 'axios'
+
 
 function getItem(label, key, icon = null, children = [], type = null) {
   return {
@@ -68,7 +70,7 @@ const App = () => {
     setCurrencyId(Number(e.key))
   }
   return (
-    <div className="flex ">
+    <div className="flex">
       <Menu
         onClick={onClick}
         style={{ width: 256 }}
@@ -77,8 +79,13 @@ const App = () => {
         items={currencies}
         className="h-screen overflow-scroll"
       />
-      <div className="mx-auto my-auto">
-        {currencyData ? <CryptocurrencyCard currency={currencyData} /> : <Spin size="large" />}
+      <div className="flex flex-col mx-auto my-auto">
+        <div className="">
+        {currencyData ? <CryptocurrencyCard currency={currencyData} width={600} /> : <Spin size="large" />}
+      </div>
+      <div className="">
+        {currencyData ? <CryptoAnalysisCard currency={currencyData} width={600}/> : <Spin size="large" />}
+      </div>
       </div>
     </div>
   )
